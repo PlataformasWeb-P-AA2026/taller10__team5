@@ -1,0 +1,27 @@
+
+<h3>Parroquias </h3>
+
+<ul>
+ {% for p in parroquias %}
+
+  <li>
+    {{p}}
+    <ul>
+        {% for p in p. %}
+          <li>
+            <span>{{p.}} - {{t.tipo}} - [<a href="{% url 'editar_numero_telefonico' t.id %}">editar</a>] </span>
+          </li>
+        {% endfor %} 
+      </ul>
+      
+
+  </li>
+  <hr />
+
+{% endfor %} 
+</ul>
+
+<br />
+[<a href="{% url 'crear_parroquia' %}">Crear parroquia</a>]
+<br/>
+[<a href="{% url 'crear_barrio' %}">Crear barrio</a>]

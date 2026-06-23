@@ -19,7 +19,7 @@ class Parroquia(models.Model):
     tipo = models.CharField(max_length=10, choices=TIPO_CHOICES)
     
     def __str__(self):
-        return self.nombre
+        return f"{self.nombre} - Ubicacion:{self.ubicacion} - Tipo:{self.tipo}"
     
 
 
