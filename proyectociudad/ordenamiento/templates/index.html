@@ -5,12 +5,12 @@
  {% for p in parroquias %}
 
   <li>
-    {{p}} - [<a href="{% url 'editar_parroquia' p.id %}">editar</a>]
+    {{p}} - [<a href="{% url 'editar_parroquia' p.id %}">editar parroquia</a>]
     <ul>
         {% for b in p.barrios.all %}
           <li>
             <span>{{b}} 
-               - [<a href="{% url 'editar_barrio' b.id %}">editar</a>] </span>
+               - [<a href="{% url 'editar_barrio' b.id %}">editar barrio</a>] </span>
           </li>
         {% endfor %} 
       </ul>
