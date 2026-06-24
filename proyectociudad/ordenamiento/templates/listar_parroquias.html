@@ -1,11 +1,38 @@
-<!-- 
-<h3>Parroquias </h3>
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h3>Número de parroquias {{ parroquias.count }}</h3>
 
 <ul>
  {% for p in parroquias %}
-
   <li>
-    {{p}} 
-{% endfor %} 
+    {{ p }} - Número de parques: {{ p.numero_parques_total }} -
+    [<a href="{% url 'editar_parroquia' p.id %}">editar</a>]
+    <ul>
+        {% for b in p.barrios.all %}
+          <li>
+            {{ b }} - Parques: {{ b.numero_parques }} -
+            Presidente:
+            {% for pres in b.presidentes.all %}
+                {{ pres.nickname }} ({{ pres.profesion }}){% if not forloop.last %}, {% endif %}
+            {% empty %}
+                no registrado
+            {% endfor %}
+            - [<a href="{% url 'editar_barrio' b.id %}">editar</a>]
+          </li>
+        {% empty %}
+          <li>No hay barrios registrados.</li>
+        {% endfor %}
+    </ul>
+  </li>
+  <hr />
+ {% empty %}
+  <li>No hay parroquias registradas.</li>
+ {% endfor %}
 </ul>
- -->
+
+[<a href="{% url 'listar_parroquias' %}">listar parroquias</a>]
+[<a href="{% url 'listar_barrios' %}">listar barrios</a>]
+[<a href="{% url 'crear_parroquia' %}">crear parroquia</a>]
+[<a href="{% url 'crear_barrio' %}">crear barrio</a>]
+{% endblock %}

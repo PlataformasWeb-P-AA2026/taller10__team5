@@ -1,28 +1,25 @@
+{% extends 'base.html' %}
 
-<h3>Parroquias </h3>
+{% block contenido %}
+<h3>Parroquias</h3>
 
 <ul>
  {% for p in parroquias %}
-
   <li>
-    {{p}} - [<a href="{% url 'editar_parroquia' p.id %}">editar parroquia</a>]
+    {{ p }} - [<a href="{% url 'editar_parroquia' p.id %}">editar parroquia</a>]
     <ul>
         {% for b in p.barrios.all %}
           <li>
-            <span>{{b}} 
-               - [<a href="{% url 'editar_barrio' b.id %}">editar barrio</a>] </span>
+            {{ b }} - [<a href="{% url 'editar_barrio' b.id %}">editar barrio</a>]
           </li>
-        {% endfor %} 
-      </ul>
-      
-
+        {% endfor %}
+    </ul>
   </li>
-  <hr />
-
-{% endfor %} 
+ {% endfor %}
 </ul>
 
-<br />
-[<a href="{% url 'crear_parroquia' %}">Crear parroquia</a>]
-<br/>
-[<a href="{% url 'crear_barrio' %}">Crear barrio</a>]
+[<a href="{% url 'listar_parroquias' %}">listar parroquias</a>]
+[<a href="{% url 'listar_barrios' %}">listar barrios</a>]
+[<a href="{% url 'crear_parroquia' %}">crear parroquia</a>]
+[<a href="{% url 'crear_barrio' %}">crear barrio</a>]
+{% endblock %}

@@ -20,7 +20,11 @@ class Parroquia(models.Model):
     
     def __str__(self):
         return f"{self.nombre} - Ubicacion:{self.ubicacion} - Tipo:{self.tipo}"
-    
+
+    @property
+    def numero_parques_total(self):
+        return sum(b.numero_parques for b in self.barrios.all())
+
 
 
 class Barrio(models.Model):

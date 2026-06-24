@@ -1,9 +1,16 @@
-<h2>Crear Parroquia</h3>
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h3>Crear Parroquia</h3>
 
 <form action="" method="post">
   {% csrf_token %}
-  {{formulario.as_p}}
+  {{ formulario.as_p }}
   <p><input type='submit' value='Agregar'/></p>
 </form>
 
-[<a href="{% url 'index' %}">inicio</a>]
+[<a href="{% url 'listar_parroquias' %}">listar parroquias</a>]
+[<a href="{% url 'listar_barrios' %}">listar barrios</a>]
+[<a href="{% url 'crear_parroquia' %}">crear parroquia</a>]
+[<a href="{% url 'crear_barrio' %}">crear barrio</a>]
+{% endblock %}
