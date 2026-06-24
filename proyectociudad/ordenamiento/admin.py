@@ -12,13 +12,13 @@ admin.site.register(Parroquia, ParroquiaAdmin)
 class BarrioaAdmin(admin.ModelAdmin):
     
     list_display = ('nombre', 'numero_viviendas', 'numero_parques','numero_edificios_residenciales','parroquia')
-    search_fields = ('nombre', 'parroquia')
+    search_fields = ('nombre', 'parroquia__nombre')
 
 admin.site.register(Barrio, BarrioaAdmin)
 
 class PresidenteBarrioAdmin(admin.ModelAdmin):
     
     list_display = ('cedula', 'nickname', 'edad','profesion','barrio')
-    search_fields = ('nombre', 'nickname')
+    search_fields = ('cedula', 'nickname')
  
 admin.site.register(PresidenteBarrio,PresidenteBarrioAdmin)
